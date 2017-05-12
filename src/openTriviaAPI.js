@@ -18,7 +18,7 @@ const openTriviaAPI = {
    * @private
    */
   _axios: Axios.create({
-    baseURL: 'https://opentdb.com/api.php',
+    baseURL: 'https://opentdb.com/',
     headers: {
       // TODO: Check what headers are needed.
     },
@@ -33,16 +33,16 @@ const openTriviaAPI = {
    * HTTP status code 4 TODO test API for what is returned.
    *
    * @private
-   * @param {string} endpoint the API endpoint to query
-   * @returns {Promise} a Promise which resolves to the data resulting from the
+   * @param {string} query - The query for the API.
+   * @returns {Promise} - Promise which resolves to the data resulting from the
    * query (or null for 404 Not Found responses), or rejects with an Error
    */
-  _fetchFromApi: endpoint => Promise
-    .resolve(openTriviaAPI._axios.get(endpoint))
+  _fetchFromApi: query => Promise
+    .resolve(openTriviaAPI._axios.get(query))
     .then(res => res.data)
     .catch((err) => {
       if (err.response) {
-        switch (err.response.status) {
+        switch (err.response.response_code) {
           case NO_RESULTS.status:
             throw new Error(NO_RESULTS.message);
           case INVALID_PARAMETER.status:
@@ -60,6 +60,28 @@ const openTriviaAPI = {
     }),
 
   /**
+   * Fetches a session token from the API
+   *
+   * @private
+   * @param {string} token - current token.
+   * @returns {Number} response_code - 0 = Success.
+   */
+  _resetToken: (token) => {
+    return openTriviaAPI._fetchFromApi(`api_token.php?command=reset?token=${token}`).response_code;
+  },
+
+  /**
+   * Resets a session token from the API
+   *
+   * @private
+   * @param {string} command - Command type (request, reset).
+   * @returns {string} token - Session token.
+   */
+  _getToken: () => {
+    return openTriviaAPI._fetchFromApi(`api_token.php?command=request`).token;
+  },
+
+  /**
    * Fetches the questions based on the query provided.
    *
    * @param {Object} [options] a configuration object
@@ -68,6 +90,7 @@ const openTriviaAPI = {
    * an Error
    */
   getQuestions: (options = { amount: 10 }) => {
+    const endpoint = `api.php`;
     const params = [];
     if (options.amount) {
       params.push(`amount=${encodeURIComponent(options.amount)}`);
@@ -84,7 +107,7 @@ const openTriviaAPI = {
     if (options.encode) {
       params.push(`encode=${encodeURIComponent(options.encoding)}`);
     }
-    return openTriviaAPI._fetchFromApi(`?${params.join('&')}`);
+    return openTriviaAPI._fetchFromApi(`${endpoint}?${params.join('&')}`);
   },
 };
 
