@@ -20,13 +20,15 @@ OpenTrivia API
 ##### Core Functions: 
  Function | Description 
  --- | ---
- _axios()  | Create axios instance
- _fetchFromAPI() | Makes our calls to API 
- options() | Sets our options for calls to API
+ _axios()  | Create axios instance.
+ _fetchFromAPI() | Makes our calls to API.
+ getQuestions() | Get questions from API.
 
 ##### Helper functions:
  Function | Description
  --- | ---
+ getToken()       | Get a token from API.
+ resetToken()     | Reset token.
  listCategories() | Lists Category options to console.
  listDificulty()  | Lists Difficulty options to console.
  listTypes()      | Lists Type options to console.
