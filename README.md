@@ -1,7 +1,7 @@
 OpenTrivia API
 ===============
 
-[![Build Status](https://travis-ci.org/sbardian/openTriviaAPI.svg?branch=master)](https://travis-ci.org/sbardian/openTriviaAPI) [![Coverage Status](https://coveralls.io/repos/github/sbardian/openTriviaAPI/badge.svg?branch=dev)](https://coveralls.io/github/sbardian/openTriviaAPI?branch=dev)
+[![Build Status](https://travis-ci.org/sbardian/openTriviaAPI.svg?branch=dev)](https://travis-ci.org/sbardian/openTriviaAPI) [![Coverage Status](https://coveralls.io/repos/github/sbardian/openTriviaAPI/badge.svg?branch=dev)](https://coveralls.io/github/sbardian/openTriviaAPI?branch=dev)
 
 ### File structure: 
 ```
