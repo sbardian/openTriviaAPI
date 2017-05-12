@@ -1,0 +1,26 @@
+{
+  "name": "opentriviaapi",
+  "version": "0.0.1",
+  "description": "An API wrapper for the openTriviaAPI",
+  "main": "index.js",
+  "directories": {
+    "test": "mocha --reporter spec"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbardian/openTriviaAPI.git"
+  },
+  "author": "Brian Andrews <sbardian@gmail.com> (https://github.com/sbardian)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sbardian/openTriviaAPI/issues"
+  },
+  "homepage": "https://github.com/sbardian/openTriviaAPI#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}
