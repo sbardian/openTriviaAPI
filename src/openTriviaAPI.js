@@ -62,22 +62,20 @@ const openTriviaAPI = {
   /**
    * Fetches a session token from the API
    *
-   * @private
    * @param {string} token - current token.
    * @returns {Number} response_code - 0 = Success.
    */
-  _resetToken: (token) => {
-    return openTriviaAPI._fetchFromApi(`api_token.php?command=reset?token=${token}`).response_code;
+   resetToken: (token) => {
+    return openTriviaAPI._fetchFromApi(`api_token.php?command=reset?token=${token}`);
   },
 
   /**
    * Resets a session token from the API
    *
-   * @private
    * @returns {string} token - Session token.
    */
-  _getToken: () => {
-    return openTriviaAPI._fetchFromApi(`api_token.php?command=request`).token;
+   getToken: () => {
+    return openTriviaAPI._fetchFromApi(`api_token.php?command=request`);
   },
 
   /**
