@@ -41,7 +41,7 @@ OpenTrivia API
 ### API query specifics: 
 ```
     options = {
-        number: {Number}        // Number of questions, null=10,
+        amount: {Number}        // Amount of questions, null=10,
         category: {Number}      // use category.js, null=any,
         difficulty: {String}    // (easy, medium, hard), null=any,
         type: {String}          // (multiple, boolean), null=any,
