@@ -74,7 +74,6 @@ const openTriviaAPI = {
    * Resets a session token from the API
    *
    * @private
-   * @param {string} command - Command type (request, reset).
    * @returns {string} token - Session token.
    */
   _getToken: () => {
