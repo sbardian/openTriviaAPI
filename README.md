@@ -1,6 +1,8 @@
 OpenTrivia API
 ===============
 
+[![Build Status](https://travis-ci.org/sbardian/openTriviaAPI.svg?branch=master)](https://travis-ci.org/sbardian/openTriviaAPI)
+
 ### File structure: 
 ```
     ./src
