@@ -19,13 +19,14 @@ OpenTrivia API
 ### openTrivia.js
 ##### Core Functions: 
  Function | Description 
-  --- | ---
-_axios()  | Create axios instance
-_fetchFromAPI() | Makes our calls to API 
-options() | Sets our options for calls to API
+ --- | ---
+ _axios()  | Create axios instance
+ _fetchFromAPI() | Makes our calls to API 
+ options() | Sets our options for calls to API
 
 ##### Helper functions:
  Function | Description
+ --- | ---
  listCategories() | Lists Category options to console.
  listDificulty()  | Lists Difficulty options to console.
  listTypes()      | Lists Type options to console.
