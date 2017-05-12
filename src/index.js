@@ -2,6 +2,10 @@
  * Created by sbardian on 5/12/17.
  */
 
-module.exports = () => {
-  console.log('Initial app setup. . . ');
-}
+const openTriviaAPI = {
+  getString(name) {
+    return `Welcome ${name} to the openTriviaAPI wrapper!`
+  }
+};
+
+module.exports = openTriviaAPI;
