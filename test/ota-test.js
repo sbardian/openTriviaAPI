@@ -5,7 +5,7 @@
 import openTriviaAPI from '../src';
 import { expect } from 'chai';
 
-describe('Test getQuestions', () => {
+describe('Test openTriviaAPI calls', () => {
   let options = {};
   before(() => {
     options = {
@@ -14,7 +14,9 @@ describe('Test getQuestions', () => {
   });
   it('Should return object', (done) => {
     openTriviaAPI.getQuestions(options)
-        .expect(res.response_code).to.equal(0)
-        .done();
+        .then((data) => {
+          expect(data.response_code).to.equal(0);
+          done();
+        });
   });
 });
