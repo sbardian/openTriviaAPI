@@ -3,18 +3,45 @@
  */
 
 import openTriviaAPI from '../src';
-import { expect } from 'chai';
+import { expect, assert } from 'chai';
 
 describe('Test openTriviaAPI calls', () => {
   let options = {};
   let token;
+  let endpoint;
   before(() => {
     options = {
       amount: 1,
+      category: 9,
+      difficulty: 'easy',
+      type: 'multiple',
+      encoding: 'url3986',
     };
+    endpoint = 'api.php?amount=1';
   });
-  it('Should return respone code 0 for success...', (done) => {
+  it('Should return axios object...', (done) => {
+    openTriviaAPI._axios()
+        .then((obj) => {
+          assert(obj);
+          done();
+        });
+  });
+  it('Should return response code 0 for success...', (done) => {
+    openTriviaAPI._fetchFromApi(endpoint)
+        .then((data) => {
+          expect(data.response_code).to.equal(0);
+          done();
+        });
+  });
+  it('Test getQuestions with options...', (done) => {
     openTriviaAPI.getQuestions(options)
+        .then((data) => {
+          expect(data.response_code).to.equal(0);
+          done();
+        });
+  });
+  it('Test getQuestions with no options...', (done) => {
+    openTriviaAPI.getQuestions()
         .then((data) => {
           expect(data.response_code).to.equal(0);
           done();
