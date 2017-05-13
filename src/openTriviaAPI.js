@@ -2,7 +2,7 @@
  * Created by sbardian on 5/12/17.
  */
 
-import { axios } from 'axios';
+import Axios from 'axios';
 import {
   NO_RESULTS,
   INVALID_PARAMETER,
@@ -16,7 +16,7 @@ const openTriviaAPI = {
    *
    * @private
    */
-  _axios: axios.create({
+  _axios: Axios.create({
     baseURL: 'https://opentdb.com/',
     headers: {
       // TODO: Check what headers are needed.
@@ -74,7 +74,7 @@ const openTriviaAPI = {
    * @returns {string} token - Session token.
    */
   getToken: () => {
-    return openTriviaAPI._fetchFromApi(`api_token.php?command=request`);
+    return openTriviaAPI._fetchFromApi('api_token.php?command=request');
   },
 
   /**
@@ -86,7 +86,7 @@ const openTriviaAPI = {
    * an Error
    */
   getQuestions: (options = { amount: 10 }) => {
-    const endpoint = `api.php`;
+    const endpoint = 'api.php';
     const params = [];
     if (options.amount) {
       params.push(`amount=${encodeURIComponent(options.amount)}`);
