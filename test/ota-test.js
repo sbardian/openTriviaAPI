@@ -56,7 +56,7 @@ describe('Test openTriviaAPI calls', () => {
           done();
         });
   });
-  it('Should reset token and response_code 0...', (done) => {
+  it('Should reset token and response code 0...', (done) => {
     openTriviaAPI.resetToken(token)
         .then((data) => {
           expect(data.response_code).to.equal(0);
