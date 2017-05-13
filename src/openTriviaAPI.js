@@ -38,25 +38,28 @@ const openTriviaAPI = {
    */
   _fetchFromApi: query => Promise
     .resolve(openTriviaAPI._axios.get(query))
-    .then(res => res.data)
-    .catch((err) => {
-      if (err.response) {
-        switch (err.response.response_code) {
-          case NO_RESULTS.status:
-            throw new Error(NO_RESULTS.message);
-          case INVALID_PARAMETER.status:
-            throw new Error(INVALID_PARAMETER.message);
-          case TOKEN_NOT_FOUND.status:
-            throw new Error(TOKEN_NOT_FOUND.message);
-          case TOKEN_EMPTY.status:
-            throw new Error(TOKEN_EMPTY.message);
-          default:
-            throw new Error(err.response.status);
+      .then((res) => {
+        if(res.data.response_code !== 0) {
+          switch (res.data.response_code) {
+            case NO_RESULTS.status:
+              throw new Error(NO_RESULTS.message);
+            case INVALID_PARAMETER.status:
+              throw new Error(INVALID_PARAMETER.status);
+            case TOKEN_NOT_FOUND.status:
+              throw new Error(TOKEN_NOT_FOUND.message);
+            case TOKEN_EMPTY.status:
+              throw new Error(TOKEN_EMPTY.message);
+            default:
+              throw new Error(err.response.status);
+          }
         }
-      } else {
-        throw err;
-      }
-    }),
+        else {
+          return res.data;
+        }
+      })
+      .catch((err) => {
+        return err;
+      }),
 
   /**
    * Fetches a session token from the API
