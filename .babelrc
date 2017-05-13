@@ -3,6 +3,6 @@
     "es2015"
   ],
   "plugins": [
-    "add-module-plugins"
+    "add-module-exports"
   ]
 }
