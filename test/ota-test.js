@@ -2,8 +2,8 @@
  * Created by sbardian on 5/12/17.
  */
 
-import { expect } from 'chai';
 import openTriviaAPI from '../src';
+import { expect } from 'chai';
 
 describe('Test getQuestions', () => {
   let options = {};
