@@ -1,0 +1,14 @@
+.editorconfig
+.gitattributes
+.gitignore
+.npmignore
+.babelrc
+.eslintrc.json
+.idea
+.travis.yml
+.nycrc
+.nyc_output
+coverage
+test
+src
+webpack
