@@ -2,14 +2,13 @@
  * Created by sbardian on 5/12/17.
  */
 
-import {axios} from 'axios';
+import { axios } from 'axios';
 import {
-  OK,
   NO_RESULTS,
   INVALID_PARAMETER,
   TOKEN_NOT_FOUND,
   TOKEN_EMPTY,
-} from 'responses';
+} from './responses';
 
 const openTriviaAPI = {
   /**
@@ -17,7 +16,7 @@ const openTriviaAPI = {
    *
    * @private
    */
-  _axios: Axios.create({
+  _axios: axios.create({
     baseURL: 'https://opentdb.com/',
     headers: {
       // TODO: Check what headers are needed.
@@ -65,7 +64,7 @@ const openTriviaAPI = {
    * @param {string} token - current token.
    * @returns {Number} response_code - 0 = Success.
    */
-   resetToken: (token) => {
+  resetToken: (token) => {
     return openTriviaAPI._fetchFromApi(`api_token.php?command=reset?token=${token}`);
   },
 
@@ -74,7 +73,7 @@ const openTriviaAPI = {
    *
    * @returns {string} token - Session token.
    */
-   getToken: () => {
+  getToken: () => {
     return openTriviaAPI._fetchFromApi(`api_token.php?command=request`);
   },
 
