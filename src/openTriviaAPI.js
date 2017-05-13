@@ -65,7 +65,7 @@ const openTriviaAPI = {
    * @returns {Number} response_code - 0 = Success.
    */
   resetToken: (token) => {
-    return openTriviaAPI._fetchFromApi(`api_token.php?command=reset?token=${token}`);
+    return openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`);
   },
 
   /**
