@@ -24,5 +24,5 @@ export const TOKEN_NOT_FOUND = {
 
 export const TOKEN_EMPTY = {
   status: 4,
-  message: 'Session Token has returned all possible questions for the specified query. Resetting the Token is necessary.'
+  message: 'Session Token has returned all possible questions for the specified query. Resetting the Token is necessary.',
 };
