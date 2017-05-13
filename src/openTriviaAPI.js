@@ -44,7 +44,7 @@ const openTriviaAPI = {
             case NO_RESULTS.status:
               throw new Error(NO_RESULTS.message);
             case INVALID_PARAMETER.status:
-              throw new Error(INVALID_PARAMETER.status);
+              throw new Error(INVALID_PARAMETER.message);
             case TOKEN_NOT_FOUND.status:
               throw new Error(TOKEN_NOT_FOUND.message);
             case TOKEN_EMPTY.status:

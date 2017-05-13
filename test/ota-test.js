@@ -50,7 +50,9 @@ describe('Test openTriviaAPI calls', () => {
   it('Should return INVALID_PARAMETER response_code 2...', (done) => {
     openTriviaAPI._fetchFromApi(endpointInvalid)
         .then((err) => {
-          expect(err.message).to.equal("2");
+          expect(err.message).to.equal("Could not return results. The API does not have " +
+              "enough questions for your query. (Ex. Asking for 50 Questions in a Category " +
+              "that only has 20.)");
           done();
         });
   });
