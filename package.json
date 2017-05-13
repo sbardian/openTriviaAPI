@@ -2,10 +2,11 @@
   "name": "opentriviaapi",
   "version": "0.0.2",
   "description": "An API wrapper for the openTriviaAPI",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "nyc --reporter=text --reporter=lcov mocha",
-    "lint": "eslint server app test || exit 0"
+    "lint": "eslint server app test || exit 0",
+    "build": "babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
