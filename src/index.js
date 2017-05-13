@@ -11,4 +11,4 @@ const openTriviaAPI = {
 module.exports = openTriviaAPI;
 */
 
-export default from './openTriviaAPI';
+export { default } from './openTriviaAPI';
