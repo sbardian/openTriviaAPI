@@ -81,6 +81,7 @@ const openTriviaAPI = {
    * Fetches the questions based on the query provided.
    *
    * @param {Object} [options] a configuration object
+   * @param {String} token API token
    * @returns {Promise} a Promise which resolves to an Object representing a single or
    * question or a set of questions (or null if no breaches were found), or rejects with
    * an Error
@@ -88,21 +89,12 @@ const openTriviaAPI = {
   getQuestions: (options = { amount: 10 }) => {
     const endpoint = 'api.php';
     const params = [];
-    if (options.amount) {
-      params.push(`amount=${encodeURIComponent(options.amount)}`);
-    }
-    if (options.category) {
-      params.push(`category=${encodeURIComponent(options.category)}`);
-    }
-    if (options.difficulty) {
-      params.push(`difficulty=${encodeURIComponent(options.difficulty)}`);
-    }
-    if (options.type) {
-      params.push(`type=${encodeURIComponent(options.type)}`);
-    }
-    if (options.encode) {
-      params.push(`encode=${encodeURIComponent(options.encoding)}`);
-    }
+    options.amount ? params.push(`amount=${encodeURIComponent(options.amount)}`) : '';
+    options.category ? params.push(`category=${encodeURIComponent(options.category)}`) : '';
+    options.difficulty ? params.push(`difficulty=${encodeURIComponent(options.difficulty)}`) : '';
+    options.type ? params.push(`type=${encodeURIComponent(options.type)}`) : '';
+    options.encoding ? params.push(`encoding=${encodeURIComponent(options.encoding)}`) : '';
+    options.token ? params.push(`token=${encodeURIComponent(options.token)}`) : '';
     return openTriviaAPI._fetchFromApi(`${endpoint}?${params.join('&')}`);
   },
 };
