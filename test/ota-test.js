@@ -4,21 +4,33 @@
 
 import openTriviaAPI from '../src';
 import { expect, assert } from 'chai';
+import { sinon } from 'sinon';
 
 describe('Test openTriviaAPI calls', () => {
-  let options = {};
+  let optionsResults = {};
+  let optionsNoResults = {};
   let token;
-  let endpoint;
+  let endpointValid;
+  let endpointInvalid;
   before(() => {
-    options = {
+    optionsResults = {
       amount: 1,
       category: 9,
       difficulty: 'easy',
       type: 'multiple',
       encoding: 'url3986',
     };
-    endpoint = 'api.php?amount=1';
+    optionsNoResults = {
+      amount: 1,
+      category: 1,
+      difficulty: 'easy',
+      type: 'multiple',
+      encoding: 'url3986',
+    }
+    endpointValid = 'api.php?amount=1';
+    endpointInvalid = 'api.php?foo=bar';
   });
+
   it('Should return axios object...', (done) => {
     openTriviaAPI._axios()
         .then((obj) => {
@@ -26,20 +38,31 @@ describe('Test openTriviaAPI calls', () => {
           done();
         });
   });
+
   it('Should return response code 0 for success...', (done) => {
-    openTriviaAPI._fetchFromApi(endpoint)
+    openTriviaAPI._fetchFromApi(endpointValid)
         .then((data) => {
           expect(data.response_code).to.equal(0);
           done();
         });
   });
+
+  it('Should return INVALID_PARAMETER response_code 2...', (done) => {
+    openTriviaAPI._fetchFromApi(endpointInvalid)
+        .then((err) => {
+          expect(err.message).to.equal("2");
+          done();
+        });
+  });
+
   it('Test getQuestions with options...', (done) => {
-    openTriviaAPI.getQuestions(options)
+    openTriviaAPI.getQuestions(optionsResults)
         .then((data) => {
           expect(data.response_code).to.equal(0);
           done();
         });
   });
+
   it('Test getQuestions with no options...', (done) => {
     openTriviaAPI.getQuestions()
         .then((data) => {
@@ -47,6 +70,7 @@ describe('Test openTriviaAPI calls', () => {
           done();
         });
   });
+
   it('Should return token...', (done) => {
     openTriviaAPI.getToken()
         .then((data) => {
@@ -56,6 +80,7 @@ describe('Test openTriviaAPI calls', () => {
           done();
         });
   });
+
   it('Should reset token and response code 0...', (done) => {
     openTriviaAPI.resetToken(token)
         .then((data) => {
