@@ -7,10 +7,10 @@ OpenTrivia API
 ```
     ./src
         index.js
-        openTrivia.js
+        openTriviaAPI.js
         responses.js
     ./test
-        tbd...
+        test.js
 ```
 
 ### index.js
