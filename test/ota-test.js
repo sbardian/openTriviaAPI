@@ -12,6 +12,8 @@ describe('Test openTriviaAPI calls', () => {
   let token;
   let endpointValid;
   let endpointInvalid;
+  let endpointNoResults;
+  let endpointFakeToken;
   before(() => {
     optionsResults = {
       amount: 1,
@@ -28,7 +30,9 @@ describe('Test openTriviaAPI calls', () => {
       encoding: 'url3986',
     }
     endpointValid = 'api.php?amount=1';
+    endpointNoResults = 'api.php?amount=1&category=1';
     endpointInvalid = 'api.php?foo=bar';
+    endpointFakeToken = 'api.php?amount=1&token=111';
   });
 
   it('Should return axios object...', (done) => {
@@ -47,12 +51,28 @@ describe('Test openTriviaAPI calls', () => {
         });
   });
 
+  it('Should return NO_RESULTS response_code 1...', (done) => {
+    openTriviaAPI._fetchFromApi(endpointNoResults)
+        .then((err) => {
+          expect(err.message).to.equal("Your query return no results.");
+          done();
+        });
+  });
+
   it('Should return INVALID_PARAMETER response_code 2...', (done) => {
     openTriviaAPI._fetchFromApi(endpointInvalid)
         .then((err) => {
           expect(err.message).to.equal("Could not return results. The API does not have " +
               "enough questions for your query. (Ex. Asking for 50 Questions in a Category " +
               "that only has 20.)");
+          done();
+        });
+  });
+
+  it('Should return TOKEN_NOT_FOUND response_code 3...', (done) => {
+    openTriviaAPI._fetchFromApi(endpointFakeToken)
+        .then((err) => {
+          expect(err.message).to.equal("Session Token does not exist.");
           done();
         });
   });
