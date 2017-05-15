@@ -1,6 +1,6 @@
 {
   "name": "opentriviaapi",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An API wrapper for the openTriviaAPI",
   "main": "lib/index.js",
   "scripts": {
