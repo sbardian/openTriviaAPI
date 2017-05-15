@@ -26,3 +26,8 @@ export const TOKEN_EMPTY = {
   status: 4,
   message: 'Session Token has returned all possible questions for the specified query. Resetting the Token is necessary.',
 };
+
+export const DEFAULT_ERROR = {
+  response_code: 6,
+  message: 'An unknown response_code error was return from the API.'
+}
