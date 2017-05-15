@@ -20,8 +20,8 @@ OpenTrivia API
 ##### Core Functions: 
  Function | Description 
  --- | ---
- _axios()  | Create axios instance.
- _fetchFromAPI() | Makes our calls to API.
+ _axios()  | Create axios instance. (Not for General use)
+ _fetchFromAPI() | Makes our calls to API. (Not for General use)
  getQuestions() | Get questions from API.
 
 ##### Helper functions:
