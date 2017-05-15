@@ -4,7 +4,9 @@
 
 import openTriviaAPI from '../src';
 import { expect, assert } from 'chai';
-import { sinon } from 'sinon';
+import moxios from 'moxios';
+import sinon from 'sinon';
+import axios from 'axios';
 
 describe('Test openTriviaAPI calls', () => {
   let optionsResults = {};
@@ -33,8 +35,13 @@ describe('Test openTriviaAPI calls', () => {
     endpointNoResults = 'api.php?amount=1&category=1';
     endpointInvalid = 'api.php?foo=bar';
     endpointFakeToken = 'api.php?amount=1&token=111';
+
+    moxios.install();
   });
 
+  after(() => {
+    moxios.uninstall();
+  });
   it('Should return axios object...', (done) => {
     openTriviaAPI._axios()
         .then((obj) => {
@@ -75,6 +82,21 @@ describe('Test openTriviaAPI calls', () => {
           expect(err.message).to.equal("Session Token does not exist.");
           done();
         });
+  });
+
+  it('Should return response_status 4 TOKEN_EMPTY...', (done) => {
+    moxios.stubRequest('/mockAPI.php', {
+      status: 200,
+      response: [
+        { response_code: 4, message: 'Session Token has returned all possible questions for the specified query. Resetting the Token is necessary.'}
+      ]
+    });
+    let onFulFilled = sinon.spy();
+    axios.get('/mockAPI.php').then(onFulFilled);
+    moxios.wait(() => {
+      expect(onFulFilled.getCall(0).args[0].data[0].response_code).to.equal(4);
+      done();
+    });
   });
 
   it('Test getQuestions with options...', (done) => {
