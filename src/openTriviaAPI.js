@@ -8,6 +8,7 @@ import {
   INVALID_PARAMETER,
   TOKEN_NOT_FOUND,
   TOKEN_EMPTY,
+  DEFAULT_ERROR,
 } from './responses';
 
 const openTriviaAPI = {
@@ -50,7 +51,7 @@ const openTriviaAPI = {
             case TOKEN_EMPTY.status:
               throw new Error(TOKEN_EMPTY.message);
             default:
-              throw new Error(err.response.status);
+              throw new Error(DEFAULT_ERROR.message);
           }
         }
         else {
