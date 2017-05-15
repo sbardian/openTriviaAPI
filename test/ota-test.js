@@ -6,7 +6,39 @@ import openTriviaAPI from '../src';
 import { expect, assert } from 'chai';
 import moxios from 'moxios';
 import sinon from 'sinon';
-import axios from 'axios';
+
+describe('Test when API returns actual ERR instead of mock errors...', () => {
+  const ERR = {
+    status: 400,
+    message: 'Total API fail...',
+
+  };
+  let failBoat;
+  before(() => {
+    moxios.install(openTriviaAPI._axios);
+    failBoat = openTriviaAPI._axios.interceptors.request.use(() => {
+      throw ERR;
+    });
+  });
+
+  after(() => {
+    moxios.uninstall(openTriviaAPI._axios);
+    openTriviaAPI._axios.interceptors.request.eject(failBoat);
+  });
+
+  it('Should return actual Error from API...', (done) => {
+    let onSuccess = sinon.spy();
+    let onError = sinon.spy();
+    openTriviaAPI._fetchFromApi('/api.php?amount=1')
+        .then(onSuccess)
+        .catch(onError)
+        .then(() => {
+          expect(onSuccess.calledOnce).to.be.false;
+          expect(onError.getCall(0).args[0].status).to.equal(400);
+          done();
+        });
+  });
+});
 
 describe('Test when token is out of available questions...', () => {
   before(() => {
@@ -33,12 +65,32 @@ describe('Test when token is out of available questions...', () => {
         .then(onSuccess)
         .catch(onError)
         .then(() => {
-          console.log('Success called = ', onSuccess.calledOnce);
-          console.log('Error called = ', onError.calledOnce);
-          console.log('Success = ', onError.getCall(0).args[0].message);
+          expect(onSuccess.calledOnce).to.be.false;
           expect(onError.getCall(0).args[0].message).to.equal('Session Token has ' +
               'returned all possible questions for the ' +
               'specified query. Resetting the Token is necessary.');
+          done();
+        });
+  });
+
+  it('Should return unknown error from api...', (done) => {
+    moxios.stubRequest('https://opentdb.com/api.php', {
+      status: 200,
+      response:
+          {
+            response_code: 6,
+            message: 'An unknown response_code error was return from the API.'
+          }
+    });
+    let onSuccess = sinon.spy();
+    let onError = sinon.spy();
+    openTriviaAPI._fetchFromApi('/api.php')
+        .then(onSuccess)
+        .catch(onError)
+        .then(() => {
+          expect(onSuccess.calledOnce).to.be.false;
+          expect(onError.getCall(0).args[0].message).to.equal('An unknown response_code ' +
+              'error was return from the API.');
           done();
         });
   });
