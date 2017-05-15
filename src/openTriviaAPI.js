@@ -56,9 +56,6 @@ const openTriviaAPI = {
         else {
           return res.data;
         }
-      })
-      .catch((err) => {
-        return err;
       }),
 
   /**
