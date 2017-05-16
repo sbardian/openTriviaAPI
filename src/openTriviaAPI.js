@@ -27,6 +27,7 @@ const openTriviaAPI = {
   /**
    * Fetches data from the supplied API endpoint.
    *
+   * response_code status code 0 returns an Object (data found).
    * response_code status code 1 returns an Object (data found but is an error).
    * response_code status code 2 returns an Object (data found but is an error).
    * response_code status code 3 returns an Object (data found but is an error).
@@ -80,15 +81,27 @@ const openTriviaAPI = {
    * @returns {Promise} a Promise which resolves to an Object representing a single
    * question or a set of questions, or rejects with an Error
    */
-  getQuestions: (options = { amount: 10 }) => {
+  getQuestions: (options) => {
     const endpoint = 'api.php';
     const params = [];
-    options.amount ? params.push(`amount=${encodeURIComponent(options.amount)}`) : params.push('amount=1');
-    options.category ? params.push(`category=${encodeURIComponent(options.category)}`) : '';
-    options.difficulty ? params.push(`difficulty=${encodeURIComponent(options.difficulty)}`) : '';
-    options.type ? params.push(`type=${encodeURIComponent(options.type)}`) : '';
-    options.encoding ? params.push(`encoding=${encodeURIComponent(options.encoding)}`) : '';
-    options.token ? params.push(`token=${encodeURIComponent(options.token)}`) : '';
+
+    if (options.amount) {
+      params.push(`amount=${encodeURIComponent(options.amount)}`);
+    } else {
+      params.push('amount=1');
+    }
+    if (options.category) {
+      params.push(`category=${encodeURIComponent(options.category)}`);
+    }
+    if (options.type) {
+      params.push(`type=${encodeURIComponent(options.type)}`);
+    }
+    if (options.encoding) {
+      params.push(`encoding=${encodeURIComponent(options.encoding)}`);
+    }
+    if (options.token) {
+      params.push(`token=${encodeURIComponent(options.token)}`)
+    }
     return openTriviaAPI._fetchFromApi(`${endpoint}?${params.join('&')}`);
   },
 };
