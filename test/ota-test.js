@@ -229,12 +229,4 @@ describe('Test openTriviaAPI calls', () => {
           done();
         });
   });
-
-  it('Test getQuestions with no options...', (done) => {
-    openTriviaAPI.getQuestions()
-        .then((data) => {
-          expect(data.response_code).to.equal(0);
-          done();
-        });
-  });
 });
