@@ -46,10 +46,63 @@ OpenTrivia API
 ### API query specifics: 
 ```
     options = {
-        amount: {Number}        // Amount of questions, null=10,
+        amount: {Number}        // Amount of questions, null=1,
         category: {Number}      // use category.js, null=any,
         difficulty: {String}    // (easy, medium, hard), null=any,
         type: {String}          // (multiple, boolean), null=any,
         encode: {string}        // (url3986, base64), null=default encoding
     }
 ```
+
+### Query options: 
+
+Amount {Number}: 
+Value | Description
+---|---
+1 - XXXXXX | any Integer.
+
+Category {Number}: 
+Value | Name
+--- | ---
+ | Any category
+ 9  | General Knowledge
+ 10 | Entertainment: Books
+ 11 | Entertainment: Film
+ 12 | Entertainment: Music
+ 13 | Entertainment: Musicals & Theatres
+ 14 | Entertainment: Television
+ 15 | Entertainment: Video Games
+ 16 | Entertainment: Board Games
+ 17 | Science & Nature
+ 18 | Science: Computers
+ 19 | Science: Mathematics
+ 20 | Mythology
+ 21 | Sports
+ 22 | Geography
+ 23 | History
+ 24 | Politics
+ 25 | Art
+ 26 | Celebrities
+ 27 | Animals
+ 
+ Difficulty {String}: 
+ ---- | ---
+ Values | Description
+  | Any difficulty
+ easy | Only easy questions
+ medium | Only medium questions
+ difficult | Only difficult questions
+ 
+ Type {String}: 
+ Value | Description
+ --- | ---
+          | Any type of questions
+ multiple | Multiple choice questions only
+ boolean  | True / False questions only
+ 
+ Encoding {String}:
+ Value | Description
+ --- | ---
+     | Default Encoding HTML codes
+ url3986 | URL Encoding (RFC 3986)
+ base64 | Base64 encoding
