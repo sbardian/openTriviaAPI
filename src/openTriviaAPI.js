@@ -64,18 +64,14 @@ const openTriviaAPI = {
    * @param {string} token - current token.
    * @returns {Number} response_code - 0 = Success.
    */
-  resetToken: (token) => {
-    openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`);
-  },
+  resetToken: (token) => openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`),
 
   /**
    * Resets a session token from the API
    *
    * @returns {string} token - Session token.
    */
-  getToken: () => {
-    openTriviaAPI._fetchFromApi('api_token.php?command=request');
-  },
+  getToken: () => openTriviaAPI._fetchFromApi('api_token.php?command=request'),
 
   /**
    * Fetches the questions based on the query provided.
