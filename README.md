@@ -3,6 +3,8 @@ OpenTrivia API
 
 [![Build Status](https://travis-ci.org/sbardian/openTriviaAPI.svg?branch=dev)](https://travis-ci.org/sbardian/openTriviaAPI) [![Coverage Status](https://coveralls.io/repos/github/sbardian/openTriviaAPI/badge.svg?branch=dev)](https://coveralls.io/github/sbardian/openTriviaAPI?branch=dev)
 
+#### Special thanks to [wKovacs64](https://github.com/wKovacs64 "wKovacs64"), he saved me hours of google time!
+
 ### File structure: 
 ```
     ./src
@@ -33,7 +35,7 @@ OpenTrivia API
  *listDificulty()  | Lists Difficulty options to console.
  *listTypes()      | Lists Type options to console.
  *listEncoding()   | Lists Encoding options to console.
- *                 | Not yet implemented. . .
+     * - Not yet implemented. . .
 
 ### responses.js
 ```
