@@ -27,15 +27,15 @@ const openTriviaAPI = {
   /**
    * Fetches data from the supplied API endpoint.
    *
-   * HTTP status code 1 returns an Object (data found).
-   * HTTP status code 2 TODO test API for what is returned.
-   * HTTP status code 3 TODO test API for what is returned.
-   * HTTP status code 4 TODO test API for what is returned.
+   * response_code status code 1 returns an Object (data found but is an error).
+   * response_code status code 2 returns an Object (data found but is an error).
+   * response_code status code 3 returns an Object (data found but is an error).
+   * response_code status code 4 returns an Object (data found but is an error).
    *
    * @private
    * @param {string} query - The query for the API.
    * @returns {Promise} - Promise which resolves to the data resulting from the
-   * query (or null for 404 Not Found responses), or rejects with an Error
+   * query, or rejects with an Error
    */
   _fetchFromApi: query => Promise
     .resolve(openTriviaAPI._axios.get(query))
@@ -77,10 +77,8 @@ const openTriviaAPI = {
    * Fetches the questions based on the query provided.
    *
    * @param {Object} [options] a configuration object
-   * @param {String} token API token
-   * @returns {Promise} a Promise which resolves to an Object representing a single or
-   * question or a set of questions (or null if no breaches were found), or rejects with
-   * an Error
+   * @returns {Promise} a Promise which resolves to an Object representing a single
+   * question or a set of questions, or rejects with an Error
    */
   getQuestions: (options = { amount: 10 }) => {
     const endpoint = 'api.php';
