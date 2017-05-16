@@ -142,7 +142,8 @@ Value | Name
              }
  ```
  
- Token {String}
+ Token {String}:
+ 
  Value | Description
  --- | ---
  "null" | No token in query
