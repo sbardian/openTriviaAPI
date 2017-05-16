@@ -7,7 +7,7 @@
     "test": "nyc --reporter=text --reporter=lcov mocha --require babel-register",
     "lint": "eslint src test || exit 0",
     "prepublish": "npm run build",
-    "build": "babel src --out-dir lib",
+    "build": "babel src --out-dir lib"
   },
   "repository": {
     "type": "git",
