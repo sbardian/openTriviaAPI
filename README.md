@@ -63,6 +63,7 @@ Value | Description
 1 - XXXXXX | any Integer.
 
 Category {Number}: 
+
 Value | Name
 --- | ---
  "null" | Any category
@@ -88,8 +89,8 @@ Value | Name
  
  Difficulty {String}: 
  
+  Values | Description
  ---- | ---
- Values | Description
  "null" | Any difficulty
  easy | Only easy questions
  medium | Only medium questions
