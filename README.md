@@ -64,7 +64,7 @@ Value | Description
 Category {Number}: 
 Value | Name
 --- | ---
- | Any category
+ "null" | Any category
  9  | General Knowledge
  10 | Entertainment: Books
  11 | Entertainment: Film
@@ -88,7 +88,7 @@ Value | Name
  Difficulty {String}: 
  ---- | ---
  Values | Description
-  | Any difficulty
+ "null" | Any difficulty
  easy | Only easy questions
  medium | Only medium questions
  difficult | Only difficult questions
@@ -96,13 +96,13 @@ Value | Name
  Type {String}: 
  Value | Description
  --- | ---
-          | Any type of questions
+  "null"  | Any type of questions
  multiple | Multiple choice questions only
  boolean  | True / False questions only
  
  Encoding {String}:
  Value | Description
  --- | ---
-     | Default Encoding HTML codes
+   "null"  | Default Encoding HTML codes
  url3986 | URL Encoding (RFC 3986)
  base64 | Base64 encoding
