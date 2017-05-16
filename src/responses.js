@@ -29,5 +29,6 @@ export const TOKEN_EMPTY = {
 
 export const DEFAULT_ERROR = {
   response_code: 6,
-  message: 'An unknown response_code error was return from the API.'
-}
+  message: 'An unknown response_code error was return from the API.',
+};
+

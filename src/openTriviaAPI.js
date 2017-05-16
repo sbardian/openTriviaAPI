@@ -40,7 +40,7 @@ const openTriviaAPI = {
   _fetchFromApi: query => Promise
     .resolve(openTriviaAPI._axios.get(query))
       .then((res) => {
-        if(res.data.response_code !== 0) {
+        if (res.data.response_code !== 0) {
           switch (res.data.response_code) {
             case NO_RESULTS.status:
               throw new Error(NO_RESULTS.message);
@@ -53,8 +53,7 @@ const openTriviaAPI = {
             default:
               throw new Error(DEFAULT_ERROR.message);
           }
-        }
-        else {
+        } else {
           return res.data;
         }
       }),
@@ -66,7 +65,7 @@ const openTriviaAPI = {
    * @returns {Number} response_code - 0 = Success.
    */
   resetToken: (token) => {
-    return openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`);
+    openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`);
   },
 
   /**
@@ -75,7 +74,7 @@ const openTriviaAPI = {
    * @returns {string} token - Session token.
    */
   getToken: () => {
-    return openTriviaAPI._fetchFromApi('api_token.php?command=request');
+    openTriviaAPI._fetchFromApi('api_token.php?command=request');
   },
 
   /**
@@ -90,7 +89,7 @@ const openTriviaAPI = {
   getQuestions: (options = { amount: 10 }) => {
     const endpoint = 'api.php';
     const params = [];
-    options.amount ? params.push(`amount=${encodeURIComponent(options.amount)}`) : params.push(`amount=1`);
+    options.amount ? params.push(`amount=${encodeURIComponent(options.amount)}`) : params.push('amount=1');
     options.category ? params.push(`category=${encodeURIComponent(options.category)}`) : '';
     options.difficulty ? params.push(`difficulty=${encodeURIComponent(options.difficulty)}`) : '';
     options.type ? params.push(`type=${encodeURIComponent(options.type)}`) : '';
