@@ -57,6 +57,7 @@ OpenTrivia API
 ### Query options: 
 
 Amount {Number}: 
+
 Value | Description
 ---|---
 1 - XXXXXX | any Integer.
@@ -86,6 +87,7 @@ Value | Name
  27 | Animals
  
  Difficulty {String}: 
+ 
  ---- | ---
  Values | Description
  "null" | Any difficulty
@@ -94,6 +96,7 @@ Value | Name
  difficult | Only difficult questions
  
  Type {String}: 
+ 
  Value | Description
  --- | ---
   "null"  | Any type of questions
@@ -101,6 +104,7 @@ Value | Name
  boolean  | True / False questions only
  
  Encoding {String}:
+ 
  Value | Description
  --- | ---
    "null"  | Default Encoding HTML codes
