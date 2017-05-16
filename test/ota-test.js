@@ -11,7 +11,6 @@ describe('Test when API returns actual ERR instead of mock errors...', () => {
   const ERR = {
     status: 400,
     message: 'Total API fail...',
-
   };
   let failBoat;
   before(() => {
