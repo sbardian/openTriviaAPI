@@ -62,6 +62,12 @@ Value | Description
 ---|---
 1 - XXXXXX | any Integer.
 
+```
+Example:   options = { 
+                amount: 100
+            }
+```
+
 Category {Number}: 
 
 Value | Name
@@ -87,6 +93,12 @@ Value | Name
  26 | Celebrities
  27 | Animals
  
+ ```
+ Example:   options = { 
+                 category: 18
+             }
+ ```
+ 
  Difficulty {String}: 
  
   Values | Description
@@ -96,6 +108,12 @@ Value | Name
  medium | Only medium questions
  difficult | Only difficult questions
  
+ ```
+ Example:   options = { 
+                 type: 'medium'
+             }
+ ```
+ 
  Type {String}: 
  
  Value | Description
@@ -104,6 +122,12 @@ Value | Name
  multiple | Multiple choice questions only
  boolean  | True / False questions only
  
+ ```
+ Example:   options = { 
+                 type: 'multiple'
+             }
+ ```
+ 
  Encoding {String}:
  
  Value | Description
@@ -111,3 +135,42 @@ Value | Name
    "null"  | Default Encoding HTML codes
  url3986 | URL Encoding (RFC 3986)
  base64 | Base64 encoding
+ 
+ ```
+ Example:   options = { 
+                 encoding: 'url3986'
+             }
+ ```
+ 
+ Token {String}
+ Value | Description
+ --- | ---
+ "null" | No token in query
+ "token" | Use getToken() to get a token
+ 
+ ```
+ Example: 
+      let token;
+      opentriviaapi.getToken()
+        .then((data) => {
+            token = data.token;
+        });
+        
+      opentriviaapi.getQuestions({token: token})
+        .then((data) => {
+            console.log(data);
+        });
+ ```
+
+
+Combined:
+```
+Example:   options = { 
+                amount: 100,
+                category: 18,
+                difficulty: 'easy',
+                type: 'multiple',
+                encoding: 'url3986',
+                token: token,
+            }
+```
