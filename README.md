@@ -29,10 +29,11 @@ OpenTrivia API
  --- | ---
  getToken()       | Get a token from API.
  resetToken()     | Reset token.
- listCategories() | Lists Category options to console.
- listDificulty()  | Lists Difficulty options to console.
- listTypes()      | Lists Type options to console.
- listEncoding()   | Lists Encoding options to console.
+ *listCategories() | Lists Category options to console.
+ *listDificulty()  | Lists Difficulty options to console.
+ *listTypes()      | Lists Type options to console.
+ *listEncoding()   | Lists Encoding options to console.
+ *                 | Not yet implemented. . .
 
 ### responses.js
 ```
