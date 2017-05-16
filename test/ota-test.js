@@ -98,7 +98,9 @@ describe('Test when token is out of available questions...', () => {
 
 describe('Test openTriviaAPI calls', () => {
   let optionsResults = {};
-  let optionsNoResults = {};
+  let optionsNoCategory = {};
+  let optionsNoDifficulty = {};
+  let noOptions = {};
   let token;
   let endpointValid;
   let endpointInvalid;
@@ -112,11 +114,22 @@ describe('Test openTriviaAPI calls', () => {
       difficulty: 'easy',
       type: 'multiple',
       encoding: 'url3986',
+      token: '',
     };
-    optionsNoResults = {
+    openTriviaAPI.getToken()
+        .then((data) => {
+          optionsResults.token = data.token;
+        });
+    noOptions = {};
+    optionsNoCategory = {
       amount: 1,
-      category: 1,
       difficulty: 'easy',
+      type: 'multiple',
+      encoding: 'url3986',
+    };
+    optionsNoDifficulty = {
+      amount: 1,
+      category: 9,
       type: 'multiple',
       encoding: 'url3986',
     };
@@ -139,6 +152,25 @@ describe('Test openTriviaAPI calls', () => {
     openTriviaAPI._fetchFromApi(endpointValid)
         .then((data) => {
           expect(data.response_code).to.equal(0);
+          done();
+        });
+  });
+
+  it('Should return token...', (done) => {
+    openTriviaAPI.getToken()
+        .then((data) => {
+          token = data.token;
+          expect(data.response_code).to.equal(0);
+          expect(data.token).to.be.a('string');
+          done();
+        });
+  });
+
+  it('Should reset token and response code 0...', (done) => {
+    openTriviaAPI.resetToken(token)
+        .then((data) => {
+          expect(data.response_code).to.equal(0);
+          expect(data.token).to.be.a('string');
           done();
         });
   });
@@ -178,28 +210,33 @@ describe('Test openTriviaAPI calls', () => {
   });
 
   it('Test getQuestions with no options...', (done) => {
+    openTriviaAPI.getQuestions(noOptions)
+        .then((data) => {
+          expect(data.response_code).to.equal(0);
+          done();
+        });
+  });
+
+  it('Test getQuestions with options that have no category...', (done) => {
+    openTriviaAPI.getQuestions(optionsNoCategory)
+        .then((data) => {
+          expect(data.response_code).to.equal(0);
+          done();
+        });
+  });
+
+  it('Test getQuestions with options that have no difficulty...', (done) => {
+    openTriviaAPI.getQuestions(optionsNoDifficulty)
+        .then((data) => {
+          expect(data.response_code).to.equal(0);
+          done();
+        });
+  });
+
+  it('Test getQuestions with no options...', (done) => {
     openTriviaAPI.getQuestions()
         .then((data) => {
           expect(data.response_code).to.equal(0);
-          done();
-        });
-  });
-
-  it('Should return token...', (done) => {
-    openTriviaAPI.getToken()
-        .then((data) => {
-          token = data.token;
-          expect(data.response_code).to.equal(0);
-          expect(data.token).to.be.a('string');
-          done();
-        });
-  });
-
-  it('Should reset token and response code 0...', (done) => {
-    openTriviaAPI.resetToken(token)
-        .then((data) => {
-          expect(data.response_code).to.equal(0);
-          expect(data.token).to.be.a('string');
           done();
         });
   });

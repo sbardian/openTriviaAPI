@@ -90,7 +90,7 @@ const openTriviaAPI = {
   getQuestions: (options = { amount: 10 }) => {
     const endpoint = 'api.php';
     const params = [];
-    options.amount ? params.push(`amount=${encodeURIComponent(options.amount)}`) : '';
+    options.amount ? params.push(`amount=${encodeURIComponent(options.amount)}`) : params.push(`amount=1`);
     options.category ? params.push(`category=${encodeURIComponent(options.category)}`) : '';
     options.difficulty ? params.push(`difficulty=${encodeURIComponent(options.difficulty)}`) : '';
     options.type ? params.push(`type=${encodeURIComponent(options.type)}`) : '';
