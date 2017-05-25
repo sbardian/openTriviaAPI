@@ -60,11 +60,11 @@ Amount {Number}:
 
 Value | Description
 ---|---
-1 - XXXXXX | any Integer.
+1 - 50 | any Integer between 1 and 50.
 
 ```
 Example:   options = { 
-                amount: 100
+                amount: 35
             }
 ```
 
@@ -167,7 +167,7 @@ Value | Name
 Combined:
 ```
 Example:   options = { 
-                amount: 100,
+                amount: 35,
                 category: 18,
                 difficulty: 'easy',
                 type: 'multiple',
