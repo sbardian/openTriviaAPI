@@ -96,8 +96,8 @@ const openTriviaAPI = {
     if (options.type) {
       params.push(`type=${encodeURIComponent(options.type)}`);
     }
-    if (options.encoding) {
-      params.push(`encoding=${encodeURIComponent(options.encoding)}`);
+    if (options.encode) {
+      params.push(`encoding=${encodeURIComponent(options.encode)}`);
     }
     if (options.token) {
       params.push(`token=${encodeURIComponent(options.token)}`)

@@ -128,7 +128,7 @@ Value | Name
              }
  ```
  
- Encoding {String}:
+ Encode {String}:
  
  Value | Description
  --- | ---
@@ -138,7 +138,7 @@ Value | Name
  
  ```
  Example:   options = { 
-                 encoding: 'url3986'
+                 encode: 'url3986'
              }
  ```
  
@@ -171,7 +171,7 @@ Example:   options = {
                 category: 18,
                 difficulty: 'easy',
                 type: 'multiple',
-                encoding: 'url3986',
+                encode: 'url3986',
                 token: token,
             }
 ```

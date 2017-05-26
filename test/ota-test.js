@@ -112,7 +112,7 @@ describe('Test openTriviaAPI calls', () => {
       category: 9,
       difficulty: 'easy',
       type: 'multiple',
-      encoding: 'url3986',
+      encode: 'url3986',
       token: '',
     };
     openTriviaAPI.getToken()
@@ -123,13 +123,13 @@ describe('Test openTriviaAPI calls', () => {
       amount: 1,
       difficulty: 'easy',
       type: 'multiple',
-      encoding: 'url3986',
+      encode: 'url3986',
     };
     optionsNoDifficulty = {
       amount: 1,
       category: 9,
       type: 'multiple',
-      encoding: 'url3986',
+      encode: 'url3986',
     };
     endpointValid = 'api.php?amount=1';
     endpointNoResults = 'api.php?amount=1&category=1';
