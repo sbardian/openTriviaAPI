@@ -20,7 +20,9 @@ const openTriviaAPI = {
   _axios: Axios.create({
     baseURL: 'https://opentdb.com/',
     headers: {
-      // TODO: Check what headers are needed.
+      "Access-Control-Allow-Origin": "*",
+      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+      "Content-Type": "application/json",
     },
   }),
 
