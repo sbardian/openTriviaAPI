@@ -95,6 +95,9 @@ const openTriviaAPI = {
     if (options.category) {
       params.push(`category=${encodeURIComponent(options.category)}`);
     }
+    if (options.difficulty) {
+      params.push(`difficulty=${encodeURIComponent(options.difficulty)}`);
+    }
     if (options.type) {
       params.push(`type=${encodeURIComponent(options.type)}`);
     }
