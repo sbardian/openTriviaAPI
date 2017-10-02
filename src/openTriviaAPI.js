@@ -83,7 +83,7 @@ const openTriviaAPI = {
    * @returns {Promise} a Promise which resolves to an Object representing a single
    * question or a set of questions, or rejects with an Error
    */
-  getQuestions: (options) => {
+  getQuestions: (options = {}) => {
     const endpoint = 'api.php';
     const params = [];
 
