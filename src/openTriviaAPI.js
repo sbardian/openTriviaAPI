@@ -20,9 +20,9 @@ const openTriviaAPI = {
   _axios: Axios.create({
     baseURL: 'https://opentdb.com/',
     headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
-      "Content-Type": "application/json",
+      'Access-Control-Allow-Origin': '*',
+      'Cache-Control': 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
+      'Content-Type': 'application/json',
     },
   }),
 
@@ -40,26 +40,25 @@ const openTriviaAPI = {
    * @returns {Promise} - Promise which resolves to the data resulting from the
    * query, or rejects with an Error
    */
-  _fetchFromApi: query => Promise
-    .resolve(openTriviaAPI._axios.get(query))
-      .then((res) => {
-        if (res.data.response_code !== 0) {
-          switch (res.data.response_code) {
-            case NO_RESULTS.status:
-              throw new Error(NO_RESULTS.message);
-            case INVALID_PARAMETER.status:
-              throw new Error(INVALID_PARAMETER.message);
-            case TOKEN_NOT_FOUND.status:
-              throw new Error(TOKEN_NOT_FOUND.message);
-            case TOKEN_EMPTY.status:
-              throw new Error(TOKEN_EMPTY.message);
-            default:
-              throw new Error(DEFAULT_ERROR.message);
-          }
-        } else {
-          return res.data;
+  _fetchFromApi: query =>
+    Promise.resolve(openTriviaAPI._axios.get(query)).then((res) => {
+      if (res.data.response_code !== 0) {
+        switch (res.data.response_code) {
+          case NO_RESULTS.status:
+            throw new Error(NO_RESULTS.message);
+          case INVALID_PARAMETER.status:
+            throw new Error(INVALID_PARAMETER.message);
+          case TOKEN_NOT_FOUND.status:
+            throw new Error(TOKEN_NOT_FOUND.message);
+          case TOKEN_EMPTY.status:
+            throw new Error(TOKEN_EMPTY.message);
+          default:
+            throw new Error(DEFAULT_ERROR.message);
         }
-      }),
+      } else {
+        return res.data;
+      }
+    }),
 
   /**
    * Fetches a session token from the API
@@ -67,7 +66,7 @@ const openTriviaAPI = {
    * @param {string} token - current token.
    * @returns {Number} response_code - 0 = Success.
    */
-  resetToken: (token) => openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`),
+  resetToken: token => openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`),
 
   /**
    * Resets a session token from the API
@@ -105,7 +104,7 @@ const openTriviaAPI = {
       params.push(`encoding=${encodeURIComponent(options.encode)}`);
     }
     if (options.token) {
-      params.push(`token=${encodeURIComponent(options.token)}`)
+      params.push(`token=${encodeURIComponent(options.token)}`);
     }
     return openTriviaAPI._fetchFromApi(`${endpoint}?${params.join('&')}`);
   },
