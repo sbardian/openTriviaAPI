@@ -4,9 +4,8 @@
   "description": "An API wrapper for the openTriviaAPI",
   "main": "lib/index.js",
   "scripts": {
-    "test":
-      "nyc --reporter=text --reporter=lcov mocha --require babel-register",
-    "lint": "eslint src test || exit 0",
+    "test": "nyc --reporter=text --reporter=lcov mocha --require babel-register",
+    "lint": "eslint src test",
     "prepublishOnly": "npm run build",
     "build": "babel src --out-dir lib"
   },
@@ -23,15 +22,15 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
+    "babel-eslint": "^8.2.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
     "eslint": "^4.17.0",
-    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.6.1",
     "mocha": "^5.0.0",
     "moxios": "^0.4.0",
     "nyc": "^11.4.1",

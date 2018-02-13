@@ -1,7 +1,3 @@
-/**
- * Created by sbardian on 5/12/17.
- */
-
 import Axios from 'axios';
 import {
   NO_RESULTS,
@@ -21,7 +17,8 @@ const openTriviaAPI = {
     baseURL: 'https://opentdb.com/',
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
+      'Cache-Control':
+        'no-store, no-cache, must-revalidate, post-check=0, pre-check=0',
       'Content-Type': 'application/json',
     },
   }),
@@ -41,7 +38,7 @@ const openTriviaAPI = {
    * query, or rejects with an Error
    */
   _fetchFromApi: query =>
-    Promise.resolve(openTriviaAPI._axios.get(query)).then((res) => {
+    Promise.resolve(openTriviaAPI._axios.get(query)).then(res => {
       if (res.data.response_code !== 0) {
         switch (res.data.response_code) {
           case NO_RESULTS.status:
@@ -66,7 +63,8 @@ const openTriviaAPI = {
    * @param {string} token - current token.
    * @returns {Number} response_code - 0 = Success.
    */
-  resetToken: token => openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`),
+  resetToken: token =>
+    openTriviaAPI._fetchFromApi(`api_token.php?command=reset&token=${token}`),
 
   /**
    * Resets a session token from the API
