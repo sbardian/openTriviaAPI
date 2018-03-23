@@ -36,24 +36,19 @@ or
 
 ##### Core Functions:
 
-| Function         | Description                                   |
-| ---------------- | --------------------------------------------- |
-| \_axios()        | Create axios instance. (Not for General use)  |
-| \_fetchFromAPI() | Makes our calls to API. (Not for General use) |
-| getQuestions()   | Get questions from API.                       |
+| Function         | Description                                     |
+| ---------------- | ----------------------------------------------- |
+| \_axios()        | Create axios instance. (Not for General use)    |
+| \_fetchFromAPI() | Makes our calls to API. (Not for General use)   |
+| getQuestions()   | Get questions from API.                         |
+| listCategories() | Get a list of available categories (No options) |
 
 ##### Helper functions:
 
-| Function           | Description                          |
-| ------------------ | ------------------------------------ |
-| getToken()         | Get a token from API.                |
-| resetToken()       | Reset token.                         |
-| \*listCategories() | Lists Category options to console.   |
-| \*listDificulty()  | Lists Difficulty options to console. |
-| \*listTypes()      | Lists Type options to console.       |
-| \*listEncoding()   | Lists Encoding options to console.   |
-
-     * - Not yet implemented. . .
+| Function     | Description           |
+| ------------ | --------------------- |
+| getToken()   | Get a token from API. |
+| resetToken() | Reset token.          |
 
 ### responses.js
 
@@ -61,7 +56,7 @@ or
     Exposes the API response values to our app.
 ```
 
-### API query specifics:
+### getQuestions API query specifics:
 
 ```
     options = {
@@ -73,7 +68,7 @@ or
     }
 ```
 
-### Query options:
+### getQuestions Query options:
 
 Amount {Number}:
 

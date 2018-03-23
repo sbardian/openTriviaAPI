@@ -5,6 +5,7 @@ import {
   TOKEN_NOT_FOUND,
   TOKEN_EMPTY,
   DEFAULT_ERROR,
+  CATEGORIES_OK,
 } from './responses';
 
 const openTriviaAPI = {
@@ -39,7 +40,7 @@ const openTriviaAPI = {
    */
   _fetchFromApi: query =>
     Promise.resolve(openTriviaAPI._axios.get(query)).then(res => {
-      if (res.data.response_code !== 0) {
+      if (res.data.response_code) {
         switch (res.data.response_code) {
           case NO_RESULTS.status:
             throw new Error(NO_RESULTS.message);
@@ -105,6 +106,17 @@ const openTriviaAPI = {
       params.push(`token=${encodeURIComponent(options.token)}`);
     }
     return openTriviaAPI._fetchFromApi(`${endpoint}?${params.join('&')}`);
+  },
+
+  /**
+   * Fetches categories list from the API
+   *
+   * @returns {Promise} a Promise which resolves to an Object listing all the
+   * available categories
+   */
+  listCategories: () => {
+    const endpoint = 'api_category.php';
+    return openTriviaAPI._fetchFromApi(`${endpoint}`);
   },
 };
 

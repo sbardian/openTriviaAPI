@@ -209,3 +209,16 @@ describe('getQuestions', () => {
       .then(onSuccess)
       .catch(onError));
 });
+
+describe('listCategories', () => {
+  beforeEach(() => {
+    onSuccess.reset();
+    onError.reset();
+  });
+
+  it('should return a Promise', () =>
+    openTriviaAPI
+      .listCategories()
+      .then(onSuccess)
+      .catch(onError));
+});
