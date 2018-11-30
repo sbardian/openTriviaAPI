@@ -1,5 +1,7 @@
 # OpenTrivia API
 
+![Project frozen](https://img.shields.io/badge/status-frozen-blue.png)
+![Project unmaintained](https://img.shields.io/badge/project-unmaintained-red.svg)
 [![Build Status](https://travis-ci.org/sbardian/openTriviaAPI.svg?branch=dev)](https://travis-ci.org/sbardian/openTriviaAPI)
 [![Coverage Status](https://coveralls.io/repos/github/sbardian/openTriviaAPI/badge.svg?branch=dev)](https://coveralls.io/github/sbardian/openTriviaAPI?branch=dev)
 
